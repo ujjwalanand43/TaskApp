@@ -25,7 +25,7 @@ function userController() {
             User.exists({ email: email }, (err, result) => {
                 if (result) {
                     res.status(404).send({
-                        message: "Some Error Occured"
+                        message: 'Some Error Occured'
                     })
                 }
             })
@@ -33,11 +33,11 @@ function userController() {
             await user.save()
             res.status(201).send({
                 sucess: true,
-                message: "User Register Successfully",
+                message: 'User Register Successfully',
                 data: user
             })
 
-            sendEmails(user.email)
+            sendEmails(user.email, 'Welcome To Au', 'Create Your Own Task check It Read Do And Complete It')
 
 
 
@@ -67,7 +67,7 @@ function userController() {
 
                 res.status(200).send({
                     sucess: true,
-                    message: "Successfully logged in",
+                    message: 'Successfully logged in',
                     data: verifyEmail,
                     token
 

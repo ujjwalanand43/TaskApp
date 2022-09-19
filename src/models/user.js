@@ -4,7 +4,10 @@ require('dotenv').config()
 const { roles } = require('../middleware/roles')
 const jwt = require('jsonwebtoken')
 const UserSchema = new mongoose.Schema({
-    name: {
+    firstname: {
+        type: String,
+    },
+    lasttname: {
         type: String,
     },
     email: {
@@ -60,6 +63,6 @@ UserSchema.methods.generateAuthToken = async function(next) {
     }
 }
 
-const User = new mongoose.model('TaskApp', UserSchema)
+const User = new mongoose.model('User', UserSchema)
 
 module.exports = User

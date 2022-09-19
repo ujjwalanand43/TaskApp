@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 require('./db/database')
 
 const userRouter = require('./routers/userrouter')
+const allRouter = require('./routers/allroutes')
 const morgan = require('morgan')
 const path = require('path')
 const User = require('./models/user')
@@ -27,6 +28,7 @@ app.use(bodyParser.urlencoded({
 
 
 app.use('/api/v1/user', userRouter)
+app.use('/api/v1/taskwise', allRouter)
 
 app.use(morgan('dev'))
 

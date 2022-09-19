@@ -1,13 +1,13 @@
+const { config } = require('dotenv');
+require('dotenv').config();
 const nodemailer = require('nodemailer');
-const { config } = require('dotenv')
-require('dotenv').config()
 
-function sendEmails(email) {
+function sendEmails(email, subject, text) {
 
     var transport = nodemailer.createTransport({
         // host: "smtp.mailtrap.io",
         host: process.env.HOST,
-        port: process.env.PORT,
+        port: process.env.NODEMAILERPORT,
         auth: {
             // user: "580e2052066f19",
             user: process.env.USER,
@@ -15,15 +15,15 @@ function sendEmails(email) {
         }
     });
     var mailOptions = {
-        from: 'ujjwalanand4277@gmail.com',
+        from: process.env.USER,
         to: email,
-        subject: "Welcome To Au",
-        text: "Create Your Own Task check It Read Do And Complete It"
+        subject: subject,
+        text: text
     };
 
     transport.sendMail(mailOptions, function(error, info) {
         if (error) {
-            console.log(error);
+            console.log("someError Occured", error);
         } else {
             console.log('Email sent: ' + info.response);
         }

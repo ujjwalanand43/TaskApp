@@ -31,7 +31,12 @@ const TaskSchema = new mongoose.Schema({
     subTask: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'subtask'
-    }]
+    }],
+    owner:{
+        type: mongoose.Schema.Types.ObjectId,
+        required:true,
+        ref:'User'
+    }
 
 }, {
     timestamps: true

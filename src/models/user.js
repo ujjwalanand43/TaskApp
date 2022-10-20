@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
 
         lowercase: true,
-        // unique: true,
+        unique: true,
     },
     password: {
         type: String,
@@ -47,8 +47,8 @@ UserSchema.methods.generateAuthToken = async function(next) {
     const user = this
     try {
         const jwtToken = jwt.sign({
-            _id: user._id,
-            email: user.email,
+            _id: user._id.toString(),
+            // email: user.email,
 
         }, process.env.TOKEN_SECRET, {
             expiresIn: '7 days'

@@ -6,6 +6,7 @@ function taskController() {
     return {
         async postTask(req, res) {
             try {
+                console.log(req.user._id)
                 const pussedImages = [];
                 const multipleEmail = [];
                 if (req.body.email) {
@@ -35,6 +36,7 @@ function taskController() {
                     email: multipleEmail,
                     path: '/image',
                     image: pussedImages,
+                    owner:req.user._id
                 })
 
                 await createTask.save()

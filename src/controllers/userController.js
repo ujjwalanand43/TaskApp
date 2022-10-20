@@ -22,19 +22,21 @@ function userController() {
                 // profilePic: "/image/" + req.file.filename
             })
 
-            User.exists({ email: email }, (err, result) => {
-                if (result) {
-                    res.status(404).send({
-                        message: 'Some Error Occured'
-                    })
-                }
-            })
+            // User.exists({ email: email }, (err, result) => {
+            //     if (result) {
+            //         res.status(404).send({
+            //             message: 'Users already exists with this email ! Please login'
+            //         })
+            //     }
+            // })
 
             await user.save()
+            const token = await user.generateAuthToken()
             res.status(201).send({
                 sucess: true,
                 message: 'User Register Successfully',
-                data: user
+                data: user,
+                token
             })
 
             sendEmails(user.email, 'Welcome To Au', 'Create Your Own Task check It Read Do And Complete It')

@@ -28,6 +28,7 @@ const UserSchema = new mongoose.Schema({
         enum: [roles.admin, roles.superadmin, roles.user],
         default: roles.user,
     },
+  
 
     tokens: [{
         token: {
@@ -41,6 +42,11 @@ const UserSchema = new mongoose.Schema({
 
 
 
+UserSchema.virtual('tasks', {
+    ref: 'Task',
+    localField: '_id',
+    foreignField: 'owner'
+})
 
 
 UserSchema.methods.generateAuthToken = async function(next) {

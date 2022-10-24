@@ -70,6 +70,9 @@ function taskController() {
 
         async getTask(req, res) {
             try {
+                console.log()
+                const authenticateTaskData = req
+                await req.user.populate('tasks')
                 const fetchedData = await Task.find({})
                     .populate('subTask')
 
@@ -82,7 +85,7 @@ function taskController() {
 
                 res.status(200).send({
                     success: true,
-                    data: fetchedData
+                    data: req.user.tasks
                 })
 
 

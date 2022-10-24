@@ -1,0 +1,36 @@
+openapi: 3.0.0
+
+
+info: 
+  title: Task App
+  description: Task App like jira 
+  version: 1.0.1
+
+
+
+servers:
+  - url: http://localhost:4000/api/vi
+    description: Localhost Api 
+  - url: https://au-task-app.herokuapp.com/
+    description:  Production Api
+  - url: http://staging-api.example.com
+    description: Optional server description, e.g. Internal staging server for testing
+
+
+
+components:
+  securitySchemes:
+
+    BasicAuth:
+      type: http
+      scheme: basic
+
+    BearerAuth:
+      type: http
+      scheme: bearer
+
+
+paths:
+  /taskwise/task:
+    get:
+      summary: For Getting the All the Task of specified user

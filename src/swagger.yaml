@@ -9,7 +9,7 @@ info:
 
 
 servers:
-  - url: http://localhost:4000/api/vi
+  - url: http://localhost:4000/api/v1
     description: Localhost Api 
   - url: https://au-task-app.herokuapp.com/
     description:  Production Api
@@ -34,3 +34,8 @@ paths:
   /taskwise/task:
     get:
       summary: For Getting the All the Task of specified user
+      responses :
+        '200' : #sstatus code
+          description: Returns all Task Data
+    post:
+      summary: For Adding Task 

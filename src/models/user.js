@@ -48,11 +48,19 @@ UserSchema.virtual('tasks', {
     foreignField: 'owner'
 })
 
+UserSchema.virtual('notes', {
+    ref: 'Note',
+    localField: '_id',
+    foreignField: 'owner'
+})
+
 
 UserSchema.methods.generateAuthToken = async function(next) {
     const user = this
     try {
         const jwtToken = jwt.sign({
+
+            
             _id: user._id.toString(),
             // email: user.email,
 

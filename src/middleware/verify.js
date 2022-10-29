@@ -7,11 +7,11 @@ const User = require('../models/user');
 const auth = async(req, res, next) => {
     try {
         const token = req.header('Authorization').replace('Bearer ', '')
-        console.log(process.env.TOKEN_SECRET)
+        // console.log(process.env.TOKEN_SECRET)
         const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET)
-        console.log(decodedToken)
+        // console.log(decodedToken)
         const user = await User.findOne({ _id: decodedToken._id,'tokens.token': token })
-        console.log(user)
+        // console.log(user)
         if (!user) {
             res.status(404).send('No user found');
         }

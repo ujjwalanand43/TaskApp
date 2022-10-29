@@ -4,7 +4,7 @@ const upload = require('../middleware/multer')
 
 const taskController = require('../controllers/taskController')
 const subTaskController = require('../controllers/subTaskController')
-
+const notesController = require('../controllers/notesController')
 const auth = require('../middleware/verify')
 // For All Tasks
 router.post('/task',auth, upload.array('images'), taskController().postTask)
@@ -21,6 +21,15 @@ router.delete('/subtask/:id',auth, subTaskController().deleteSubTask)
 
 
 
+// For Notes
+
+router.post('/notes',auth, upload.array('images'), notesController().postNotes)
+router.get('/notes',auth, notesController().getNotes)
+router.patch('/notes/:id',auth, notesController().updateNotes)
+router.delete('/notes/:id',auth, notesController().deleteNotes)
+
+
 module.exports = router
+
 
 

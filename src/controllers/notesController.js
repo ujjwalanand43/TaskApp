@@ -11,11 +11,10 @@ function notesController(){
             const fileGet = req.files.map((file) => {
                 pussedImages.push(file.filename)
                 
-                // console.log(file.filename)
-                // console.log(pussedImages[0].originalname);
+          
             });
             
-            console.log(pussedImages)
+ 
 
             const createNotes = new Notes({
                 title: req.body.title,
@@ -23,14 +22,13 @@ function notesController(){
                 tags: req.body.tags,
                 subtitle: req.body.subtitle,
                 topic: req.body.topic,
-                path: '/image',
+                path: '/image/',
                 images: pussedImages,
                 owner:req.user._id
             })
 
             await createNotes.save()
 
-            // console.log(createNotes)
             res.status(201).send({
                 sucess: true,
                 message: 'Notes created successfully',
@@ -87,7 +85,7 @@ function notesController(){
                     data: updateNote
                 })
             } catch (error) {
-                console.log(error)
+              
                 res.status(500).send({
                     success: false,
                     message: "Not able to Update Data"

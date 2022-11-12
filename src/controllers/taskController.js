@@ -6,24 +6,26 @@ function taskController() {
     return {
         async postTask(req, res) {
             try {
-                console.log(req.user._id)
-                const pussedImages = [];
-                const multipleEmail = [];
+
+                       const pussedImages = [];
+            
+                const fileGet = req.files.map((file) => {
+                    pussedImages.push(file.filename)
+                    
+              
+                });
+           
+                let multipleEmail = []
+                
                 if (req.body.email) {
-                    console.log('hii');
                     req.body.email.map((email) => {
                         multipleEmail.push(email)
+                        
                     })
                 }
-
-
-                if (req.body.files) {
-                    const fileGet = req.files.map((file) => {
-                        pussedImages.push(file.filename)
-                        console.log(pussedImages);
-                    });
-                }
-
+                   
+         
+        
 
                 const createTask = new Task({
                     title: req.body.title,
@@ -34,8 +36,8 @@ function taskController() {
                     subTask: req.body.subTask,
                     topic: req.body.subTask,
                     email: multipleEmail,
-                    path: '/image',
-                    image: pussedImages,
+                    path: '/image/',
+                    images: pussedImages,
                     owner:req.user._id
                 })
 
@@ -47,7 +49,7 @@ function taskController() {
                 });
 
                 let convertEmailToString = multipleEmail.toString();
-                console.log(convertEmailToString)
+               
                 let subject = {
                     'title': createTask.title,
                     'description': createTask.description
@@ -58,7 +60,7 @@ function taskController() {
 
 
             } catch (error) {
-                console.log(error)
+            
                 res.status(500).send({
                     sucess: false,
                     message: 'Not Able to Create Tasks'
@@ -70,7 +72,7 @@ function taskController() {
 
         async getTask(req, res) {
             try {
-                console.log()
+   
               
                 await req.user.populate('tasks')
                 const fetchedData = await Task.find({})
@@ -90,7 +92,7 @@ function taskController() {
 
 
             } catch (error) {
-                console.log(error)
+              
                 res.status(500).send({
                     success: false,
                     message: "Not able to fetch Data"
@@ -100,7 +102,7 @@ function taskController() {
 
         async updateTask(req, res) {
             try {
-                console.log(req.params.id);
+              
                 // const findData = await Task.findById(req.params.id)
 
 
@@ -117,7 +119,7 @@ function taskController() {
                 })
 
             } catch (error) {
-                console.log(error)
+            
                 res.status(500).send({
                     success: false,
                     message: "Not able to Update Data"

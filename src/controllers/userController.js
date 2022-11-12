@@ -7,6 +7,14 @@ const sendEmails = require('../middleware/nodemailer');
 function userController() {
 
     return {
+        async getCurrentUser(req,res){
+            const user = await req.user
+
+            res.status(200).send({
+                data:user
+            })
+        },
+          
 
         async postRegister(req, res) {
 
@@ -14,21 +22,28 @@ function userController() {
             const password = req.body.password;
             const salt = await genSalt();
             const hashedPassword = await bcrypt.hash(password, salt)
-
+            
+           
+            const fileData = []
+       
+            if(req.file){
+              fileData.push(req.file.filename)
+            }
+          
+            
             const user = new User({
-                name: req.body.name,
+                firstname: req.body.firstname,
+                lastname: req.body.lastname,
                 email: email,
                 password: hashedPassword,
-                // profilePic: "/image/" + req.file.filename
+                // path:"/image/",
+                
+                profilePic : "/image/" + fileData
+             
+              
             })
 
-            // User.exists({ email: email }, (err, result) => {
-            //     if (result) {
-            //         res.status(404).send({
-            //             message: 'Users already exists with this email ! Please login'
-            //         })
-            //     }
-            // })
+         
 
             await user.save()
             const token = await user.generateAuthToken()
@@ -75,7 +90,7 @@ function userController() {
 
                 })
             } catch (error) {
-                console.log(error);
+             
             }
 
 

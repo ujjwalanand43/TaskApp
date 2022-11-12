@@ -21,7 +21,8 @@ const UserSchema = new mongoose.Schema({
 
     },
     profilePic: {
-        type: String
+        type: String,
+        default: "",
     },
     role: {
         type: String,
@@ -62,7 +63,8 @@ UserSchema.methods.generateAuthToken = async function(next) {
 
             
             _id: user._id.toString(),
-            // email: user.email,
+            email: user.email,
+            firstname:user.firstname
 
         }, process.env.TOKEN_SECRET, {
             expiresIn: '7 days'

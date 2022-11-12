@@ -8,7 +8,7 @@ const storage = multer.diskStorage({
                 console.log('hey');
                 cb(
                     null,
-                    path.join(path.dirname(__dirname), "../public/uploads/image/")
+                    path.join(path.dirname(__dirname), "./public/uploads/image/")
                 );
             } else {
                 cb(

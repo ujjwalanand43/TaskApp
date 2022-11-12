@@ -22,8 +22,7 @@ function taskController() {
 
 
                 const subTaskId = createSubTask._id
-                console.log(subTaskId)
-                console.log(req.body.main);
+               
                 var objectid = mongoose.Types.ObjectId(`${req.body.main}`);
 
                 const getId = await Task.findByIdAndUpdate(objectid, {
@@ -41,7 +40,7 @@ function taskController() {
 
 
             } catch (error) {
-                console.log(error)
+              
                 res.status(500).send({
                     sucess: false,
                     message: 'Not Able to SubTask Tasks'
@@ -70,7 +69,7 @@ function taskController() {
 
 
             } catch (error) {
-                console.log(error)
+               
                 res.status(500).send({
                     success: false,
                     message: "Not able to fetch Data"
@@ -93,7 +92,7 @@ function taskController() {
                 })
 
             } catch (error) {
-                console.log(error)
+             
                 res.status(500).send({
                     success: false,
                     message: "Not able to Update Data"

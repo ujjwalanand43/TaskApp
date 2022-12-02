@@ -3,15 +3,10 @@ const { config } = require('dotenv')
 require('dotenv').config()
 const { roles } = require('../middleware/roles')
 const jwt = require('jsonwebtoken')
-const TaskSchema = new mongoose.Schema({
+const CategorySchema = new mongoose.Schema({
     title: {
         type: String,
-
-    },
-    description: {
-        type: String,
-        lowercase: true,
-        // unique: true,
+        required:true
     },
     assignee: {
         type: String,
@@ -24,19 +19,13 @@ const TaskSchema = new mongoose.Schema({
     email: [{
         type: String,
     }],
-    images: [{
-        type: String
+
+    tasks:[{
+        type: mongoose.Schema.Types.ObjectId,
+        required:true,
+        ref:'Task'
     }],
 
-    subTask: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'subtask'
-    }],
-    board:{
-        type:mongoose.Schema.Types.ObjectId,
-        
-        ref:'Board'
-    },
     owner:{
         type: mongoose.Schema.Types.ObjectId,
         required:true,
@@ -50,5 +39,5 @@ const TaskSchema = new mongoose.Schema({
 
 
 
-const Task = new mongoose.model('Task', TaskSchema)
-module.exports = Task
+const Category = new mongoose.model('Category', CategorySchema)
+module.exports = Category

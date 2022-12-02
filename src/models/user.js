@@ -41,7 +41,7 @@ const UserSchema = new mongoose.Schema({
     timestamps: true
 })
 
-
+// for creating a specific author task/notes/boards
 
 UserSchema.virtual('tasks', {
     ref: 'Task',
@@ -54,6 +54,14 @@ UserSchema.virtual('notes', {
     localField: '_id',
     foreignField: 'owner'
 })
+
+UserSchema.virtual('boards',{
+   ref:'Board',
+   localField:'_id',
+    foreignField:'owner'
+})
+
+
 
 
 UserSchema.methods.generateAuthToken = async function(next) {

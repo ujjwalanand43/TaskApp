@@ -1,11 +1,19 @@
 const express = require('express')
 const router = express.Router()
 const upload = require('../middleware/multer')
-
+const boardController = require('../controllers/boardController')
 const taskController = require('../controllers/taskController')
 const subTaskController = require('../controllers/subTaskController')
 const notesController = require('../controllers/notesController')
 const auth = require('../middleware/verify')
+
+// For Boards
+router.post('/board',auth,upload.single('images'),boardController().PostBoard)
+router.get('/board',auth,boardController().getBoard)
+
+
+// For Category
+// router.post('/category',auth,bo)
 // For All Tasks
 router.post('/task',auth, upload.array('images'), taskController().postTask)
 router.get('/task',auth, taskController().getTask)

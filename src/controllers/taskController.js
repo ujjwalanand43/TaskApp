@@ -35,6 +35,7 @@ function taskController() {
                     assignee: req.body.assignee,
                     subTask: req.body.subTask,
                     topic: req.body.subTask,
+                    board:req.body.board,
                     email: multipleEmail,
                     path: '/image/',
                     images: pussedImages,
@@ -60,7 +61,7 @@ function taskController() {
 
 
             } catch (error) {
-            
+            console.log(error)
                 res.status(500).send({
                     sucess: false,
                     message: 'Not Able to Create Tasks'

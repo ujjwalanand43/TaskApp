@@ -8,12 +8,14 @@ const storage = multer.diskStorage({
                 console.log('hey');
                 cb(
                     null,
-                    path.join(path.dirname(__dirname), "./public/uploads/image/")
+                   
+                    path.join(path.dirname(__dirname), "../../public/uploads/image/")
+              
                 );
             } else {
                 cb(
                     null,
-                    path.join(path.dirname(__dirname), "./public/uploads/")
+                    path.join(path.dirname(__dirname), "../public/uploads/image")
                 );
 
             }
@@ -54,3 +56,7 @@ const upload = multer({
 });
 
 module.exports = upload;
+
+
+
+

@@ -1,7 +1,7 @@
 const { config } = require('dotenv')
 require('dotenv').config()
 const express = require('express');
-const app = express()
+const app = express() 
 var cors = require('cors')
 const bodyParser = require("body-parser");
 require('./db/database');
@@ -17,7 +17,12 @@ const swaggerDocument = YAML.load(swagger_path);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+// for image upload 
 
+app.use(express.static(path.join(__dirname, "../public/uploads")));
+app.use("/", express.static("public"));
+const frameData = path.join(__dirname , "../public/uploads")
+console.log(frameData,"Your dirname is")
 
 const userRouter = require('./routers/userrouter')
 const allRouter = require('./routers/allroutes')
@@ -45,7 +50,6 @@ app.use('/api/v1/taskwise', allRouter)
 
 app.use(morgan('dev'))
 
-
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT ||  4000, () => {
     console.log('Listening to port 4000')
 })

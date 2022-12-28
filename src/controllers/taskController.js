@@ -148,6 +148,36 @@ function taskController() {
                     message: 'Not able to Delete Data'
                 })
             }
+        },
+
+        async findATask(req,res){
+            try {
+              
+                const findTask = await Task.find(req.query)
+                console.log(findTask.length)
+                if(findTask.length === 0){
+                    
+                    res.status(500).send({
+                        sucess:false,
+                        message:"Their is no task found on your accont please create a new one !!"
+                    })
+                }else{
+
+                    res.status(200).send({
+                        sucess:true,
+                        message:findTask
+                    })
+                }
+
+                
+            } catch (error) {
+                res.status(404).send({
+                    sucess:false,
+                    message:"Unable to find a task"
+                })
+            }
+
+        
         }
 
 

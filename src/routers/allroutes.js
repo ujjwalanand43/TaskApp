@@ -14,12 +14,13 @@ router.get('/board',auth,boardController().getBoard)
 
 // For Category
 // router.post('/category',auth,bo)
+
 // For All Tasks
 router.post('/task',auth, upload.array('images'), taskController().postTask)
 router.get('/task',auth, taskController().getTask)
 router.patch('/task/:id',auth, taskController().updateTask)
 router.delete('/task/:id',auth, taskController().deleteTask)
-
+router.get('/onetask',auth,taskController().findATask)
 
 // For Subtask
 router.post('/subtask',auth, subTaskController().postSubTask)

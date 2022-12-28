@@ -22,15 +22,21 @@ function taskController() {
 
 
                 const subTaskId = createSubTask._id
-               
-                var objectid = mongoose.Types.ObjectId(`${req.body.main}`);
+                // Here maintaskid represents the task id of maintaskid task not the subtask id
+                var objectid = mongoose.Types.ObjectId(`${req.body.maintaskid}`);
+                console.log(objectid)
+
 
                 const getId = await Task.findByIdAndUpdate(objectid, {
                     $push: {
                         "subTask": subTaskId,
                     }
                 })
-
+                // if(num>10){
+                //     console.log('hello world')
+                //     console.table('something went wrong')
+                //     console.warn('404 f')
+                // }
                 await getId.save()
                 res.status(201).send({
                     sucess: true,
@@ -40,7 +46,7 @@ function taskController() {
 
 
             } catch (error) {
-              
+              console.log(error)
                 res.status(500).send({
                     sucess: false,
                     message: 'Not Able to SubTask Tasks'

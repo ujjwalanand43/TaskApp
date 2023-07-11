@@ -5,7 +5,7 @@
 
 <img src="https://github.com/ujjwalanand43/TaskApp/blob/d9a51ca84ea4b5e61ebbb67fd4b8621aa0858cb6/src/public/uploads/1663442623343taskApp.png" alt="FrontEnd Design of Task App" >
 
-<img src="https://github.com/ujjwalanand43/TaskApp/assets/74017578/f86b7523-b1d0-46f6-bf56-8fc11b77d69b" alt="Redisigned Ui of Task App" >
+<img src="[https://github.com/ujjwalanand43/TaskApp/assets/74017578/f86b7523-b1d0-46f6-bf56-8fc11b77d69b](https://github.com/ujjwalanand43/TaskApp/assets/74017578/9c2b906b-f4c9-46ca-9614-92c08717c0d2)" alt="Redisigned Ui of Task App" >
 
   .
     ├── node_modules                   # Node_modules (alternatively `Dependancy`)

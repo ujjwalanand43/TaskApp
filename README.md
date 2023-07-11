@@ -7,7 +7,10 @@
 
 <img src="https://github.com/ujjwalanand43/TaskApp/assets/74017578/04bf1c0e-cee5-49f2-b74b-088bf0d88f4c" alt="Redisigned Ui of Task App" >
 
-  .
+
+
+
+  
     ├── node_modules                   # Node_modules (alternatively `Dependancy`)
     ├── docs                    # Documentation files (alternatively `doc`)
     ├── src                     # Source files (alternatively `lib` or `app`)
@@ -36,4 +39,3 @@
     ├── package-lock.json               # Automated tests (alternatively `spec` or `tests`)
     ├── package.json                    # Detail of the Application(Task-App)
     └── README.md
-![WhatsApp Image 2023-07-11 at 11 47 54 AM](https://github.com/ujjwalanand43/TaskApp/assets/74017578/04bf1c0e-cee5-49f2-b74b-088bf0d88f4c)
